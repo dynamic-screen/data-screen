@@ -1,8 +1,20 @@
 <template>
     <div class="screen-bg" ref="screenRef">
         <div class="line">
+            <!-- 标题 -->
             <div class="head-box">
                 <img src="@/assets/img/title_bg.png" class="bg-img" />
+                <span class="title">哈尔滨华德学院核酸数据可视化大屏</span>
+            </div>
+            <!-- 总人数 -->
+            <div class="w-p-63 middle m-t-20">
+                <div class="total">总检测人数</div>
+                <div class="num-box">
+                    <div class="num-item m-r-20" v-for="item in count" :key="item">
+                        <img src="@/assets/img/center_num.png" class="num-img inline" />
+                        <span class="num">{{ item }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -13,7 +25,9 @@
 
 export default {
     data() {
-        return {};
+        return {
+            count: [6, 6, 6, 6, 6],
+        };
     },
     created() {},
 };
@@ -26,9 +40,6 @@ export default {
     height: 100%;
     background: -webkit-linear-gradient(top, transparent 10px, #f0f0f0 10px, #cdcdcd 12px, transparent 12px, transparent 69px, #f0f0f0 60px),
         -webkit-linear-gradient(left, transparent 10px, #f0f0f0 10px, #cdcdcd 12px, transparent 12px, transparent 69px, #f0f0f0 60px);
-    -webkit-background-size: 41px 41px;
-    -moz-background-size: 41px 41px;
-    background-size: 41px 41px;
     margin: 0;
     -webkit-background-size: 20px 20px;
     -moz-background-size: 20px 20px;
@@ -41,12 +52,56 @@ export default {
 }
 /* 背景色 */
 .line {
-    opacity: 0.7;
+    opacity: 0.89;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(#000327, #000214, #000752, #000a77, #000752);
+    background-image: linear-gradient(#1d2b56, #1d2b56, #1d2b56, #1d2b56, #1d2b56);
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.head-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 63%;
+    font-size: 2vw;
+    color: #0efcff;
+}
+.title {
+    position: absolute;
+}
+.total {
+    font-size: 30px;
+    color: #0efcff;
+    margin-left: 20%;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+}
+.num-img {
+    width: 100%;
+}
+.num-box {
+    margin-left: 60px;
+    width: 50%;
+    display: flex;
+}
+.num {
+    font-size: 40px;
+    color: #0efcff;
+    position: absolute;
+}
+.num-item {
+    position: relative;
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
