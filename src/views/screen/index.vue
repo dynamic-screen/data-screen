@@ -16,17 +16,26 @@
                     </div>
                 </div>
             </div>
+            <div class="data-content m-t-20">
+                <chart-vue></chart-vue>
+                <chart-vue></chart-vue>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import chartVue from './modules/chart.vue';
 
 export default {
+    components: {
+        chartVue,
+    },
     data() {
         return {
             count: [6, 6, 6, 6, 6],
+            total: 0,
         };
     },
     created() {},
@@ -103,5 +112,12 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.data-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
 }
 </style>
