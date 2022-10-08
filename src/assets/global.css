@@ -1,0 +1,39 @@
+.m-t-10{
+  margin-top: 10px;
+}
+
+.m-l-10{
+  margin-left: 10px;
+}
+
+.m-r-10{
+  margin-right: 10px;
+}
+
+.m-b-10{
+  margin-bottom: 10px;
+}
+
+.m-t-20{
+  margin-top: 20px;
+}
+
+.m-l-20{
+  margin-left: 20px;
+}
+
+.m-r-20{
+  margin-right: 20px;
+}
+
+.m-b-20{
+  margin-bottom:20px;
+}
+
+.w-p-63{
+  width: 63%;
+}
+
+.inline{
+  display: inline;
+}
