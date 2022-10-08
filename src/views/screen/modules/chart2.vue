@@ -16,6 +16,7 @@ export default {
             ],
         };
     },
+    //
     mounted() {
         this.initG();
     },

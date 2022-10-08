@@ -24,7 +24,7 @@
         </div>
     </div>
 </template>
-
+//
 <script>
 // @ is an alias to /src
 import chartVue from './modules/chart.vue';

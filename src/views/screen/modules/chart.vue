@@ -8,7 +8,7 @@
 import { Chart } from '@antv/g2';
 export default {
     name: 'chart',
-
+    //
     data() {
         return {
             dataSource: [
