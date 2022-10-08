@@ -17,8 +17,9 @@
                 </div>
             </div>
             <div class="data-content m-t-20">
-                <chart-vue></chart-vue>
-                <chart-vue></chart-vue>
+                <chart-vue2></chart-vue2>
+                <chart-vue class="s"></chart-vue>
+                <!--                <chart-vue></chart-vue>-->
             </div>
         </div>
     </div>
@@ -27,10 +28,11 @@
 <script>
 // @ is an alias to /src
 import chartVue from './modules/chart.vue';
-
+import chartVue2 from './modules/chart2.vue';
 export default {
     components: {
         chartVue,
+        chartVue2,
     },
     data() {
         return {
@@ -119,5 +121,8 @@ export default {
     display: flex;
     padding: 30px;
     justify-content: space-between;
+}
+.s {
+    padding: 40px 60px 0;
 }
 </style>
