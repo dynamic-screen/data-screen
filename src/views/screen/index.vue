@@ -10,16 +10,15 @@
             <div class="w-p-63 middle m-t-20">
                 <div class="total">总检测人数</div>
                 <div class="num-box">
-                    <div class="num-item m-r-20" v-for="item in count" :key="item">
+                    <div class="num-item m-r-20" v-for="(item, index) in count" :key="index">
                         <img src="@/assets/img/center_num.png" class="num-img inline" />
                         <span class="num">{{ item }}</span>
                     </div>
                 </div>
             </div>
             <div class="data-content m-t-20">
-                <chart-vue2></chart-vue2>
-                <chart-vue class="s"></chart-vue>
-                <!--                <chart-vue></chart-vue>-->
+                <chart-vue2 :total="total"></chart-vue2>
+                <chart-vue></chart-vue>
             </div>
         </div>
     </div>
@@ -37,7 +36,7 @@ export default {
     data() {
         return {
             count: [6, 6, 6, 6, 6],
-            total: 0,
+            total: 1000,
         };
     },
     created() {},
