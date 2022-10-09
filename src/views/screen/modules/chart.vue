@@ -65,20 +65,29 @@ export default {
                 // width: this.$refs.chartRef.offsetWidth,
                 autoFit: true,
                 height: this.$refs.chartRef.offsetHeight,
-                padding: [16, 0, 64, 0],
+                padding: [16, 30, 64, 30],
             });
 
             // Step 2: 载入数据源
             this.chart.data(this.dataSource);
-            this.chart.scale({
-                sold: {
-                    alias: '已做',
-                    nice: true,
-                },
-            });
+            this.chart.scale('sold', { alias: '已做人数', nice: true });
             // Step 3: 创建图形语法，绘制柱状图
             this.chart.legend(false);
-            this.chart.axis('sold', false);
+            this.chart.axis('sold', {
+                label: {
+                    style: {
+                        fill: '#fff',
+                    },
+                    title: {
+                        style: {
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Bold',
+                            textAlign: 'center',
+                            fill: '#fff', // 文本颜色
+                        },
+                    },
+                },
+            });
             this.chart.axis('genre', {
                 label: {
                     style: {
@@ -121,10 +130,10 @@ export default {
                     offsetY: -6,
                 });
             });
-            this.chart.interaction('element-visible-filter');
-            this.chart.interaction('plot-mousewheel-scroll', {
-                start: [{ trigger: 'plot:mousewheel', action: 'mousewheel-scroll:scroll', arg: { wheelDelta: 5 } }],
-            });
+            // this.chart.interaction('element-visible-filter');
+            // this.chart.interaction('plot-mousewheel-scroll', {
+            //     start: [{ trigger: 'plot:mousewheel', action: 'mousewheel-scroll:scroll', arg: { wheelDelta: 5 } }],
+            // });
             // Step 4: 渲染图表
             this.chart.render();
         },
