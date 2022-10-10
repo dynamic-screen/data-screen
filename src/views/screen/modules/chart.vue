@@ -65,7 +65,7 @@ export default {
                 // width: this.$refs.chartRef.offsetWidth,
                 autoFit: true,
                 height: this.$refs.chartRef.offsetHeight,
-                padding: [16, 30, 64, 30],
+                padding: [20, 30, 120, 30],
             });
 
             // Step 2: 载入数据源
@@ -145,7 +145,7 @@ export default {
 .content {
     background-image: url('../../../assets/img/main_top_bottom.png');
     background-repeat: no-repeat;
-    background-size: 100% 60vh;
+    background-size: 100% 50vh;
     width: 49%;
 }
 .title {

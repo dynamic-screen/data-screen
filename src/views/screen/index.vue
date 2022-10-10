@@ -8,6 +8,14 @@
             </div>
             <!-- 总人数 -->
             <div class="w-p-63 middle m-t-20">
+                <div class="total m-r-10">当前场次:</div>
+                <div class="num-box">
+                    <div class="num-item m-r-20">
+                        <span class="num total">{{ order }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-p-63 middle m-t-20">
                 <div class="total">总检测人数</div>
                 <div class="num-box">
                     <div class="num-item m-r-20" v-for="(item, index) in count" :key="index">
@@ -20,6 +28,7 @@
                 <chart-vue2 :total="total"></chart-vue2>
                 <chart-vue></chart-vue>
             </div>
+            <div class="provider">{{ provider }}</div>
         </div>
     </div>
 </template>
@@ -37,6 +46,8 @@ export default {
         return {
             count: [6, 6, 6, 6, 6],
             total: 1000,
+            order: 'xxx',
+            provider: 'Powered by 软件工程系·创客实验室',
         };
     },
     created() {},
@@ -44,6 +55,12 @@ export default {
 </script>
 
 <style scoped>
+.provider {
+    color: #fff;
+    position: relative;
+    bottom: 20px;
+    font-size: 15px;
+}
 /* 网格 */
 .screen-bg {
     width: 100%;

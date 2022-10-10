@@ -34,6 +34,7 @@ export default {
                 // width: this.$refs.chartRef.offsetWidth,
                 autoFit: true,
                 height: this.$refs.chartRef.offsetHeight,
+                padding: [20, 30, 60, 30],
             });
             this.chart.coordinate('theta', {
                 radius: 0.65,
@@ -108,7 +109,7 @@ export default {
 .content {
     background-image: url('../../../assets/img/main_top_bottom.png');
     background-repeat: no-repeat;
-    background-size: 100% 60vh;
+    background-size: 100% 50vh;
     width: 49%;
 }
 .title {
