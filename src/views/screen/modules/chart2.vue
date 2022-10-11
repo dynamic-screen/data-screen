@@ -108,6 +108,7 @@ export default {
                 .adjust('stack');
 
             this.chart.interaction('element-active');
+            this.chart.removeInteraction('legend-filter');
 
             this.chart.render();
         },
