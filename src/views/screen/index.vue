@@ -8,13 +8,13 @@
             </div>
             <!-- 总人数 -->
             <div class="w-p-63 middle m-t-20">
-                <div class="total m-r-10">当前场次:</div>
+                <div class="total m-r">当前场次:</div>
                 <div class="num-box total">
                     <span class="m-l-10">{{ title }}</span>
                 </div>
             </div>
             <div class="w-p-63 middle m-t-20">
-                <div class="total">总检测人数</div>
+                <div class="total">今日总检测人数</div>
                 <div class="num-box">
                     <div class="num-item m-r-20" v-for="(item, index) in count" :key="index">
                         <img src="@/assets/img/center_num.png" class="num-img inline" />
@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div class="data-content m-t-20">
-                <chart-vue2 :total="total" ref="chart2"></chart-vue2>
-                <chart-vue ref="chart"></chart-vue>
+                <chart-vue2 :total="total" :joinNum="joinNum" ref="chart2"></chart-vue2>
+                <chart-vue ref="chart" :address="address"></chart-vue>
             </div>
             <div class="provider">{{ provider }}</div>
         </div>
@@ -48,11 +48,17 @@ export default {
             total: 1000,
             provider: 'Powered by 软件工程系·创客实验室',
             title: '无',
-            joinYesNum: 0,
+            natCount: 0,
             timer: null,
+            joinNum: [], // 饼图
+            address: [], // 柱状图
         };
     },
     methods: {
+        refreshCharts() {
+            this.$refs.chart.refresh();
+            this.$refs.chart2.refresh();
+        },
         // 数字转换
         parseNum(origin, res, countIndex) {
             for (let index = origin.length - 1; index > -1; index--) {
@@ -73,17 +79,18 @@ export default {
         },
         getScreenData() {
             getScreen().then(res => {
-                console.log(res);
+                // console.log(res);
                 if (res.code == 20000) {
                     const { title } = res.data.roundData;
-                    const { joinYesNum } = res.data;
-                    this.joinYesNum = joinYesNum;
+                    const { natCount, joinNum, address } = res.data;
+                    this.natCount = natCount;
                     this.title = title;
-                    let tempCount = joinYesNum.toString().split('');
+                    let tempCount = natCount.toString().split('');
                     let countIndex = this.count.length - 1;
                     this.parseNum(tempCount, this.count, countIndex);
-                    this.$refs.chart.chart.render();
-                    this.$refs.chart2.chart.render();
+                    this.joinNum = joinNum;
+                    this.address = address;
+                    this.refreshCharts();
                 } else {
                     this.$message.error(res.message);
                 }
@@ -91,12 +98,16 @@ export default {
         },
     },
     created() {
+        this.getScreenData();
         this.updateScreen();
     },
 };
 </script>
 
 <style scoped>
+.m-r {
+    margin-right: 6%;
+}
 .provider {
     color: #fff;
     position: relative;

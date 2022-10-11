@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <div class="title">核酸数据概览</div>
+        <div class="title">核酸情况实时数据总览</div>
         <div ref="chartRef" class="chart"></div>
     </div>
 </template>
@@ -12,14 +12,19 @@ export default {
     props: {
         total: {
             type: Number,
+            default: () => 0,
+        },
+        joinNum: {
+            type: Array,
+            default: () => [],
         },
     },
     data() {
         return {
-            dataSource: [
-                { type: '已做', value: 90 },
-                { type: '未做', value: 10 },
-            ],
+            // dataSource: [
+            //     { type: '已做', value: 0 },
+            //     { type: '未做', value: 999 },
+            // ],
             chart: null,
         };
     },
@@ -28,6 +33,11 @@ export default {
         this.initG();
     },
     methods: {
+        refresh() {
+            this.chart.data(this.joinNum);
+            this.chart.render();
+            // console.log(this.joinNum);
+        },
         initG() {
             this.chart = new Chart({
                 container: this.$refs.chartRef,
@@ -39,7 +49,7 @@ export default {
             this.chart.coordinate('theta', {
                 radius: 0.65,
             });
-            this.chart.data(this.dataSource);
+            this.chart.data(this.joinNum);
             this.chart.tooltip({
                 showTitle: false,
                 showMarkers: false,
