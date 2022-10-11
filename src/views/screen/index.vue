@@ -9,10 +9,8 @@
             <!-- 总人数 -->
             <div class="w-p-63 middle m-t-20">
                 <div class="total m-r-10">当前场次:</div>
-                <div class="num-box">
-                    <div class="num-item m-r-20">
-                        <span class="num total">{{ order }}</span>
-                    </div>
+                <div class="num-box total">
+                    <span class="m-l-10">{{ title }}</span>
                 </div>
             </div>
             <div class="w-p-63 middle m-t-20">
@@ -25,8 +23,8 @@
                 </div>
             </div>
             <div class="data-content m-t-20">
-                <chart-vue2 :total="total"></chart-vue2>
-                <chart-vue></chart-vue>
+                <chart-vue2 :total="total" ref="chart2"></chart-vue2>
+                <chart-vue ref="chart"></chart-vue>
             </div>
             <div class="provider">{{ provider }}</div>
         </div>
@@ -35,8 +33,10 @@
 //
 <script>
 // @ is an alias to /src
+import { getScreen } from '@/api/screen/index';
 import chartVue from './modules/chart.vue';
 import chartVue2 from './modules/chart2.vue';
+
 export default {
     components: {
         chartVue,
@@ -44,13 +44,55 @@ export default {
     },
     data() {
         return {
-            count: [6, 6, 6, 6, 6],
+            count: ['0', '0', '0', '0', '0'],
             total: 1000,
-            order: 'xxx',
             provider: 'Powered by 软件工程系·创客实验室',
+            title: '无',
+            joinYesNum: 0,
+            timer: null,
         };
     },
-    created() {},
+    methods: {
+        // 数字转换
+        parseNum(origin, res, countIndex) {
+            for (let index = origin.length - 1; index > -1; index--) {
+                res[countIndex] = origin[index];
+                countIndex--;
+            }
+            // 更新补0
+            let decrease = res.length - origin.length;
+            for (let index = 0; index < decrease; index++) {
+                res[index] = '0';
+            }
+        },
+        // 5s更新一次数据
+        updateScreen() {
+            setInterval(() => {
+                this.getScreenData();
+            }, 5000);
+        },
+        getScreenData() {
+            getScreen().then(res => {
+                console.log(res);
+                if (res.code == 20000) {
+                    const { title } = res.data.roundData;
+                    const { joinYesNum } = res.data;
+                    this.joinYesNum = joinYesNum;
+                    this.title = title;
+                    let tempCount = joinYesNum.toString().split('');
+                    let countIndex = this.count.length - 1;
+                    this.parseNum(tempCount, this.count, countIndex);
+                    this.$refs.chart.chart.render();
+                    this.$refs.chart2.chart.render();
+                } else {
+                    this.$message.error(res.message);
+                }
+            });
+        },
+    },
+    created() {
+        this.updateScreen();
+    },
 };
 </script>
 
