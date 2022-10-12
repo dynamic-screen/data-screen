@@ -4,7 +4,10 @@
             <!-- 标题 -->
             <div class="head-box">
                 <img src="@/assets/img/title_bg.png" class="bg-img" />
-                <span class="title">哈尔滨华德学院核酸数据可视化大屏</span>
+                <span class="title">
+                    <!-- <img src="@/assets/logo.png" /> -->
+                    哈尔滨华德学院核酸数据可视化大屏
+                </span>
             </div>
             <!-- 总人数 -->
             <div class="w-p-63 middle m-t-20">
@@ -26,7 +29,11 @@
                 <chart-vue2 :total="total" :joinNum="joinNum" ref="chart2"></chart-vue2>
                 <chart-vue ref="chart" :address="address"></chart-vue>
             </div>
-            <div class="provider">{{ provider }}</div>
+            <div class="provider">
+                Powered by
+                <img src="@/assets/aq1it-blmgj.png" />
+                {{ provider }}
+            </div>
         </div>
     </div>
 </template>
@@ -46,7 +53,7 @@ export default {
         return {
             count: ['0', '0', '0', '0', '0'],
             total: 1000,
-            provider: 'Powered by 软件工程系·创客实验室',
+            provider: '软件工程系·创客实验室',
             title: '无',
             natCount: 0,
             timer: null,
