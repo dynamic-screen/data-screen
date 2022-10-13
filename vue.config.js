@@ -7,7 +7,14 @@ const localdev = {
     },
 };
 
-const prod = {};
+const prod = {
+    '/api/screen': {
+        target: 'http://81.68.82.139:127',
+        pathRewrite: {
+            '^/api/screen': '/',
+        },
+    },
+};
 
 const isDev = process.env.NODE_ENV === 'development';
 
