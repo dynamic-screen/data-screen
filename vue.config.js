@@ -1,6 +1,6 @@
 const localdev = {
     '/api/screen': {
-        target: 'http://47.94.149.72:9991',
+        target: 'http://81.68.82.139:9991',
         pathRewrite: {
             '^/api/screen': '/',
         },
@@ -9,7 +9,7 @@ const localdev = {
 
 const prod = {
     '/api/screen': {
-        target: 'http://81.68.82.139:127',
+        target: 'http://81.68.82.139:9991',
         pathRewrite: {
             '^/api/screen': '/',
         },
