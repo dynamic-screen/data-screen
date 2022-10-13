@@ -7,8 +7,12 @@ const localdev = {
     },
 };
 
+const prod = {};
+
+const isDev = process.env.NODE_ENV === 'development';
+
 module.exports = {
     devServer: {
-        proxy: localdev,
+        proxy: isDev ? localdev : prod,
     },
 };
