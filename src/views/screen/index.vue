@@ -82,7 +82,7 @@ export default {
         updateScreen() {
             setInterval(() => {
                 this.getScreenData();
-            }, 5000);
+            }, 8000);
         },
         getScreenData() {
             getScreen().then(res => {

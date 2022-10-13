@@ -164,20 +164,20 @@ export default {
                     height: '0',
                 },
             });
-            this.chart.interval().position('genre*sold').color('genre');
+            this.chart.interval().position('genre*sold');
             this.chart.interaction('element-visible-filter');
             this.chart.interaction('plot-mousewheel-scroll', {
                 start: [{ trigger: 'plot:mousewheel', action: 'mousewheel-scroll:scroll', arg: { wheelDelta: 5 } }],
             });
             // 滚动条
-            // this.chart.option('scrollbar', {
-            //     type: 'horizontal',
-            //     style: {
-            //         trackColor: 'rgba(255, 255, 255, 0.699)',
-            //         thumbColor: 'rgba(0, 0, 0, 0.4)',
-            //     },
-            //     categorySize: 80,
-            // });
+            this.chart.option('scrollbar', {
+                type: 'horizontal',
+                style: {
+                    trackColor: 'rgba(255, 255, 255, 0.699)',
+                    thumbColor: 'rgba(0, 0, 0, 0.4)',
+                },
+                categorySize: 100,
+            });
             this.sign(this.address);
             // Step 4: 渲染图表
             this.chart.render();
