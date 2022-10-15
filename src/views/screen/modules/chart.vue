@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <div class="title">已做核酸人数实时统计</div>
+        <div class="title">校内核酸地点实时统计</div>
         <div ref="chartRef" class="chart"></div>
     </div>
 </template>

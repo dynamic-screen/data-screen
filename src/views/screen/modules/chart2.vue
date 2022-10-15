@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <div class="title">核酸情况实时数据总览</div>
+        <div class="title">核酸应检情况数据总览</div>
         <div ref="chartRef" class="chart"></div>
     </div>
 </template>
