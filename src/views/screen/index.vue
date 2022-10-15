@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="w-p-63 middle m-t-20">
-                <div class="total">今日总检测人数</div>
+                <div class="total">当前总检测数据</div>
                 <div class="num-box">
                     <div class="num-item m-r-20" v-for="(item, index) in count" :key="index">
                         <img src="@/assets/img/center_num.png" class="num-img inline" />

@@ -61,9 +61,9 @@ export default {
                     style: {
                         textAlign: 'center',
                         fill: '#fff',
-                        fontSize: 15,
+                        fontSize: 16,
                     },
-                    offsetY: -6,
+                    offsetY: -16,
                 });
             });
         },
